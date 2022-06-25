@@ -10,14 +10,16 @@ export default function PCountries() {
   console.log(params.name)
 
   const [dataArray, setDataArray] = useState([])
-  const [loading, setloading] = useState([true])
+  const [loading, setloading] = useState(true)
 
 
   useEffect(() => {
 
   const getData = async () => {
     await Jogi.get('/name/' + params.name)
-      .then((res) => {setDataArray(res.data)
+      .then((res) => {
+        setDataArray(res.data)
+        setloading(false)
       .catch((err) => {console.log('JG, Theres an Error : ' + err)
       .finaly(() => {setloading(false)
             })
@@ -28,17 +30,19 @@ export default function PCountries() {
     getData()
   }, [params.name])
 
-
   // console.log(dataArray)
-  console.group(loading)
+  // console.log(loading)
 
   return (
+  <div>
+      {loading ?
+        <div> Loading </div>
+        :
     <div>
-      PCountries
       {dataArray.map((c, idx) => {
         return (
           <div
-            key={c.name.common}
+          key={c.name.common}
           >
             <p>{c.name.common}</p>
             <img src={c.flags.png} alt='flag'/>
@@ -46,6 +50,8 @@ export default function PCountries() {
           </div>
         )
       })}
-    </div>
+      </div>
+    }
+      </div>
   )
 }

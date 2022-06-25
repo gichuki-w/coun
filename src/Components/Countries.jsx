@@ -8,7 +8,7 @@ import Jogi from './Jogi'
 export default function Countries() {
   
   const [dataArray, setDataArray] = useState([])
-  const [loading, setloading] = useState([true])
+  const [loading, setloading] = useState(true)
   const queue = '/name/ken'
 
   // // check local storage - use elsewhere
@@ -34,9 +34,12 @@ export default function Countries() {
   }, [])
 
   // console.log(dataArray)
-  console.log(loading)
+  // console.log(loading)
 
   return (
+    <div>{loading ? 
+            <div>Loading</div>
+    : 
     <div>
       Countries
       {dataArray.map((c, idx) => {
@@ -45,7 +48,7 @@ export default function Countries() {
         <Link
           to={'/country/'+ c.name.common}
           key={idx}
-        >
+          >
           <p>{c.name.common}</p>
           <img src={c.flags.png} alt='flag'/>
           <p>{c.capital.map( c => {return ( <>{c}</>)} )}</p>
@@ -54,6 +57,8 @@ export default function Countries() {
             </div>
         )
       })}
-    </div>
+      </div>
+    }
+      </div>
   )
 }
