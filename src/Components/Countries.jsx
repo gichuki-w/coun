@@ -33,7 +33,7 @@ export default function Countries() {
     getData()
   }, [])
 
-  console.log(dataArray)
+  // console.log(dataArray)
   console.log(loading)
 
   return (
@@ -54,7 +54,6 @@ export default function Countries() {
             </div>
         )
       })}
-      {/* <Outlet /> */}
     </div>
   )
 }
