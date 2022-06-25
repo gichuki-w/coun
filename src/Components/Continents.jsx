@@ -1,11 +1,9 @@
 import React from 'react'
 
-function Header() {
+export default function Continents() {
   return (
     <div>
-      Header
+      Continents
     </div>
   )
 }
-
-export default Header
