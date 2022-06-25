@@ -1,5 +1,5 @@
 import React from 'react'
-
+import '../countries.css'
 import { Link } from 'react-router-dom'
 
 import { useState, useEffect } from 'react';
@@ -10,19 +10,15 @@ export default function Countries() {
   const [dataArray, setDataArray] = useState([])
   const [loading, setloading] = useState(true)
   const queue = '/name/ken'
-
-  // // check local storage - use elsewhere
-  // const check = localStorage.getItem('world')
-  // if (check) {
-  //   setDataArray(JSON.parse(check))
-  // } else {
-  // }
   
   useEffect(() => {
 
   const getData = async () => {
     await Jogi.get(queue)
-      .then((res) => {setDataArray(res.data)
+      .then((res) => {
+        setDataArray(res.data)
+        setloading(false)
+          
       .catch((err) => {console.log('JG, Theres an Error : ' + err)
       .finaly(() => {setloading(false)
             })
@@ -32,13 +28,11 @@ export default function Countries() {
 
     getData()
   }, [])
-
   // console.log(dataArray)
   // console.log(loading)
-
   return (
     <div>{loading ? 
-            <div>Loading</div>
+            <div className='loadingOne'>Loading</div>
     : 
     <div>
       Countries

@@ -12,7 +12,6 @@ export default function PCountries() {
   const [dataArray, setDataArray] = useState([])
   const [loading, setloading] = useState(true)
 
-
   useEffect(() => {
 
   const getData = async () => {
@@ -26,13 +25,10 @@ export default function PCountries() {
          })
       })
   }
-
     getData()
   }, [params.name])
-
   // console.log(dataArray)
   // console.log(loading)
-
   return (
   <div>
       {loading ?
